@@ -48,6 +48,8 @@ def seed():
     conn.commit()
 
     count = cur.execute("SELECT COUNT(*) FROM orders").fetchone()[0]
+    date_range = cur.execute("SELECT MIN(created_at), MAX(created_at) FROM orders").fetchone()
+    print(f"Date range: {date_range[0]} to {date_range[1]}")
     conn.close()
     print(f"Seeded {count} orders into report.db")
 
