@@ -49,6 +49,7 @@ def create_report(body: GenerateReportBody = GenerateReportBody(), response: Res
     conn = get_conn()
     today = datetime.now().strftime("%Y-%m-%d")
 
+    # Once-a-day check happens before any rendering work — cheap read, avoid wasted render/disk I/O
     if not body.force:
         existing = conn.execute(
             "SELECT id, path, created_at FROM reports WHERE date(created_at) = ? ORDER BY id DESC LIMIT 1",
