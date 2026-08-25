@@ -36,7 +36,7 @@ def on_startup():
 def health():
     return {"status": "ok"}
 
-
+# Note: this endpoint blocks for a few seconds while Chromium renders — see README's Stage 4 note.
 @app.post("/reports")
 def create_report(body: GenerateReportBody = GenerateReportBody(), response: Response = None):
     """
