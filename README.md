@@ -131,7 +131,7 @@ $ ls reports/
 1.pdf  2.pdf
 ```
 
-## Project layout
+## Project Structure
 
 ```
 db.py       # SQLite connection + schema (orders, reports)
