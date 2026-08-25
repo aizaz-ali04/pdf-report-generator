@@ -180,7 +180,8 @@ def render_pdf(html: str, output_path: Path) -> None:
         browser = p.chromium.launch()
         page = browser.new_page()
         page.set_content(html)
-        page.pdf(path=str(output_path), format="A4", print_background=True)
+        page.pdf(path=str(output_path), format="A4", print_background=True,
+                 margin={"top": "20px", "bottom": "20px"})
         browser.close()
 
 
