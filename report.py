@@ -33,6 +33,7 @@ def get_report_data() -> dict:
         "SELECT COALESCE(SUM(amount), 0) AS total FROM orders"
     ).fetchone()["total"]
 
+    # top 5 by revenue, not by order count — a product with fewer, pricier orders can outrank one with more, cheaper orders
     top_products = [
         dict(row)
         for row in conn.execute(
